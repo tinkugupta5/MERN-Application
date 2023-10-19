@@ -24,4 +24,15 @@ app.use((error,req,res,next) => {
 })
 
 const PORT = process.env.PORT || 3000 
-app.listen(PORT,()=>console.log(`🚀 on port ${PORT}`))
+mongoose.connect(process.env.MONGO_URI,{
+    dbName:process.env.DB_NAME,
+    // useNewUrlParser:true,
+    // useUnifiedTopology:true,
+    // useCreateIndex:true,
+    // useFindAndModify:false
+
+}).then(()=>{
+    console.log('💾 Connected...')
+    app.listen(PORT,()=>console.log(`🚀 on port ${PORT}`));
+}).catch(err =>console.log(err.message))
+
