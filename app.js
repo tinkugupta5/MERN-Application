@@ -5,13 +5,13 @@ const mongoose = require('mongoose')
 require('dotenv').config()
 
 const app = express()
-
+app.set('view engine','ejs');
 app.use(morgan('dev')) // this package is used for which route is hitted by user.
 
 
-app.get('/',(req,res,next) => {
-    res.send('Working')
-})
+app.use('/',require('./routes/index.route'));
+app.use('/auth',require('./routes/auth.route'));
+app.use('/user',require('./routes/user.route'));
 
 app.use((req,res,next) => {
     next(createHttpErrors.NotFound());
