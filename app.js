@@ -5,8 +5,12 @@ const mongoose = require('mongoose')
 require('dotenv').config()
 
 const app = express()
+app.use(morgan('dev')) 
 app.set('view engine','ejs');
-app.use(morgan('dev')) // this package is used for which route is hitted by user.
+app.use(express.static('public'));
+app.use(express.json())
+app.use(express.urlencoded({extended:false}))
+
 
 
 app.use('/',require('./routes/index.route'));
@@ -20,6 +24,7 @@ app.use((req,res,next) => {
 app.use((error,req,res,next) => {
     error.status = error.status || 500
     res.status(error.status)
+    res.render('error_40x',{error});
     res.send(error);
 })
 

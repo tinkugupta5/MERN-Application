@@ -1,8 +1,9 @@
-const router = require('express').Router()
+const router = require('express').Router();
 
-router.get('/profile',(req,res,nex)=>{
-    res.send('User Profile')
-})
+router.get('/profile', async (req, res, next) => {
+  // console.log(req.user);
+//   const person = req.user;
+  res.render('profile');
+});
 
-
-module.exports = router
+module.exports = router;
