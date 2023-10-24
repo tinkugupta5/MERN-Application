@@ -17,6 +17,7 @@ router.post('/register',async(req,res,next)=>{
         const doesExist = await User.findOne({email})
         if(doesExist){
             res.redirect('/auth/register')
+            
             return
         }
         const user = new User(req.body)
