@@ -11,8 +11,6 @@ app.use(express.static('public'));
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 
-
-
 app.use('/',require('./routes/index.route'));
 app.use('/auth',require('./routes/auth.route'));
 app.use('/user',require('./routes/user.route'));
