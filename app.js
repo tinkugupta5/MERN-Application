@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const mongoose = require('mongoose')
 require('dotenv').config()
 
+
 const app = express()
 app.use(morgan('dev')) 
 app.set('view engine','ejs');
